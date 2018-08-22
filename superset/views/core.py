@@ -295,7 +295,7 @@ appbuilder.add_view_no_menu(DatabaseAsync)
 
 class CsvToDatabaseView(SimpleFormView):
     form = CsvToDatabaseForm
-    form_title = _('CSV to Database configuration')
+    form_title = _('UniRec to Database configuration')
     add_columns = ['database', 'schema', 'table_name']
 
     def form_get(self, form):

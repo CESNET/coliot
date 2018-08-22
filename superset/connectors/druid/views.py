@@ -199,15 +199,15 @@ class DruidClusterModelView(SupersetModelView, DeleteMixin, YamlExportMixin):  #
         DeleteMixin._delete(self, pk)
 
 
-appbuilder.add_view(
-    DruidClusterModelView,
-    name='Druid Clusters',
-    label=__('Druid Clusters'),
-    icon='fa-cubes',
-    category='Sources',
-    category_label=__('Sources'),
-    category_icon='fa-database',
-)
+# appbuilder.add_view(
+#     DruidClusterModelView,
+#     name='Druid Clusters',
+#     label=__('Druid Clusters'),
+#     icon='fa-cubes',
+#     category='Sources',
+#     category_label=__('Sources'),
+#     category_icon='fa-database',
+# )
 
 
 class DruidDatasourceModelView(DatasourceModelView, DeleteMixin, YamlExportMixin):  # noqa

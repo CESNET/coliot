@@ -19,16 +19,12 @@ from superset.connectors.connector_registry import ConnectorRegistry
 READ_ONLY_MODEL_VIEWS = {
     'DatabaseAsync',
     'DatabaseView',
-    'DruidClusterModelView',
 }
 
 GAMMA_READ_ONLY_MODEL_VIEWS = {
     'SqlMetricInlineView',
     'TableColumnInlineView',
     'TableModelView',
-    'DruidColumnInlineView',
-    'DruidDatasourceModelView',
-    'DruidMetricInlineView',
 } | READ_ONLY_MODEL_VIEWS
 
 ADMIN_ONLY_VIEW_MENUS = {
