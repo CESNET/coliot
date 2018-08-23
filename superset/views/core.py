@@ -294,6 +294,8 @@ appbuilder.add_view_no_menu(DatabaseAsync)
 
 
 class CsvToDatabaseView(SimpleFormView):
+    logger = '/usr/bin/nemea/logger'
+
     form = CsvToDatabaseForm
     form_title = _('UniRec to Database configuration')
     add_columns = ['database', 'schema', 'table_name']
@@ -309,6 +311,11 @@ class CsvToDatabaseView(SimpleFormView):
         form.if_exists.data = 'append'
 
     def form_post(self, form):
+
+        in_path = 'outputfile.trapcap.10'
+        out = os.system(logger + ' -i f:' + in_path + ' -t -w temp.csv')
+        form.csv_file.data = open('temp.csv', 'w')
+
         csv_file = form.csv_file.data
         form.csv_file.data.filename = secure_filename(form.csv_file.data.filename)
         csv_filename = form.csv_file.data.filename
