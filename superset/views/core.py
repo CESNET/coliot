@@ -311,18 +311,16 @@ class CsvToDatabaseView(SimpleFormView):
         form.if_exists.data = 'append'
 
     def form_post(self, form):
+        logger = '/usr/bin/nemea/logger' # path on the logger
+        in_path = '/incubator-superset/superset/views/outputfile.trapcap.10' # chose default path for UniRec files
+        temp_filename = 'temp.csv' # TODO generate this file name
 
-        in_path = 'outputfile.trapcap.10'
-        out = os.system(logger + ' -i f:' + in_path + ' -t -w temp.csv')
-        form.csv_file.data = open('temp.csv', 'w')
-
-        csv_file = form.csv_file.data
-        form.csv_file.data.filename = secure_filename(form.csv_file.data.filename)
+        form.csv_file.data.filename = temp_filename
         csv_filename = form.csv_file.data.filename
-        path = os.path.join(config['UPLOAD_FOLDER'], csv_filename)
+        path = os.path.join(config['UPLOAD_FOLDER'], temp_filename)
+        os.system(logger + ' -i f:' + in_path + ' -t -w ' + path)
         try:
             utils.ensure_path_exists(config['UPLOAD_FOLDER'])
-            csv_file.save(path)
             table = SqlaTable(table_name=form.name.data)
             table.database = form.data.get('con')
             table.database_id = table.database.id
