@@ -301,7 +301,6 @@ class CsvToDatabaseView(SimpleFormView):
     add_columns = ['database', 'schema', 'table_name']
 
     def form_get(self, form):
-        form.sep.data = ','
         form.header.data = 0
         form.mangle_dupe_cols.data = True
         form.skipinitialspace.data = False
@@ -312,12 +311,15 @@ class CsvToDatabaseView(SimpleFormView):
 
     def form_post(self, form):
         logger = '/usr/bin/nemea/logger' # path on the logger
-        in_path = '/incubator-superset/superset/views/outputfile.trapcap.10' # chose default path for UniRec files
+        in_path = '/etc/coliot/unirec/' # chose default path for UniRec files
         temp_filename = 'temp.csv' # TODO generate this file name
 
-        form.csv_file.data.filename = temp_filename
-        csv_filename = form.csv_file.data.filename
-        path = os.path.join(config['UPLOAD_FOLDER'], temp_filename)
+        test = in_path + form.unirec_file.data
+
+        form.unirec_file.data = in_path + form.unirec_file.data
+        csv_filename = form.unirec_file.data
+        #path = os.path.join(config['UPLOAD_FOLDER'], temp_filename)
+        path = form.unirec_file.data
         os.system(logger + ' -i f:' + in_path + ' -t -w ' + path)
         try:
             utils.ensure_path_exists(config['UPLOAD_FOLDER'])
@@ -344,7 +346,7 @@ class CsvToDatabaseView(SimpleFormView):
                     'database "{2}"'.format(csv_filename,
                                             form.name.data,
                                             db_name))
-        flash(message, 'info')
+        flash(message + 'DEBUG: ' + test, 'info')
         return redirect('/tablemodelview/list/')
 
 

@@ -195,12 +195,12 @@ class BaseEngineSpec(object):
             extension = os.path.splitext(filename)[1]
             return extension and extension[1:] in config['ALLOWED_EXTENSIONS']
 
-        filename = secure_filename(form.csv_file.data.filename)
+        filename = secure_filename(form.unirec_file.data)
         if not _allowed_file(filename):
             raise Exception('Invalid file type selected')
         kwargs = {
             'filepath_or_buffer': filename,
-            'sep': form.sep.data,
+            'sep': ',',
             'header': form.header.data if form.header.data else 0,
             'index_col': form.index_col.data,
             'mangle_dupe_cols': form.mangle_dupe_cols.data,
@@ -1058,7 +1058,7 @@ class HiveEngineSpec(PrestoEngineSpec):
             if schema_name:
                 table_name = '{}.{}'.format(schema_name, table_name)
 
-        filename = form.csv_file.data.filename
+        filename = form.unirec_file.data
         bucket_path = config['CSV_TO_HIVE_UPLOAD_S3_BUCKET']
 
         if not bucket_path:
@@ -1067,11 +1067,11 @@ class HiveEngineSpec(PrestoEngineSpec):
                 'No upload bucket specified. You can specify one in the config file.')
 
         table_name = form.name.data
-        filename = form.csv_file.data.filename
+        filename = form.unirec_file.data
         upload_prefix = config['CSV_TO_HIVE_UPLOAD_DIRECTORY']
 
         upload_path = config['UPLOAD_FOLDER'] + \
-            secure_filename(form.csv_file.data.filename)
+            secure_filename(form.unirec_file.data)
 
         hive_table_schema = Table(upload_path).infer()
         column_name_and_type = []
