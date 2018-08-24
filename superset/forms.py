@@ -59,7 +59,7 @@ class CsvToDatabaseForm(DynamicForm):
     list = os.listdir('coliot')
 
     for ln in list:
-        sez = sez + ' <tr> <td>'+ln+'</td> <td>root</td> <td>28.08.2018 11:21</td> <td>.md</td> <td>342 Kb</td> <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-success btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" data-path="'+ln+'"><span class="glyphicon glyphicon-open"></span></button></p></td> <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td> </tr>'
+        sez = sez + ' <tr> <td>'+ln+'</td> <td>root</td> <td>28.08.2018 11:21</td> <td>.md</td> <td>342 Kb</td> <td><p data-placement="top" data-toggle="tooltip" title="Edit"><div class="btn btn-success btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" data-path="'+ln+'"><span class="glyphicon glyphicon-open"></span></div></p></td> </tr>'
 
     name = StringField(
         _('Table Name'),
@@ -82,27 +82,16 @@ class CsvToDatabaseForm(DynamicForm):
                       '<th>Format</th> '
                       '<th>Size</th> '
                       '<th>Translate</th> '
-                      '<th>Delete</th> '
                       '</tr>'
                       '</thead> '
                       '<tbody> ' + sez + '</tbody> '
                                          '</table>'
                                          '</div> <div class="modal-footer"> </div> </div> </div> </div> </div>'),
         validators=[DataRequired()])
-    csv_file = FileField(
-        _('CSV File'),
-        description=_('Select a CSV file to be uploaded to a database.'),
-        validators=[
-            FileRequired(), FileAllowed(['csv'], _('CSV Files Only!'))])
     con = QuerySelectField(
         _('Database'),
         query_factory=csv_enabled_dbs,
         get_pk=lambda a: a.id, get_label=lambda a: a.database_name)
-    sep = StringField(
-        _('Delimiter'),
-        description=_('Delimiter used by CSV file (for whitespace use \s+).'),
-        validators=[DataRequired()],
-        widget=BS3TextFieldWidget())
     if_exists = SelectField(
         _('Table Exists'),
         description=_(
