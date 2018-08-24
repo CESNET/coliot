@@ -20,6 +20,7 @@ from superset.models import core as models
 
 config = app.config
 
+import os
 
 class CommaSeparatedListField(Field):
     widget = BS3TextFieldWidget()
@@ -54,11 +55,40 @@ class CsvToDatabaseForm(DynamicForm):
             models.Database).filter_by(
                 allow_csv_upload=True).all()
 
+    sez = ' ';
+    list = os.listdir('coliot')
+
+    for ln in list:
+        sez = sez + ' <tr> <td>'+ln+'</td> <td>root</td> <td>28.08.2018 11:21</td> <td>.md</td> <td>342 Kb</td> <td>$
+
     name = StringField(
         _('Table Name'),
         description=_('Name of table to be created from csv data.'),
         validators=[DataRequired()],
         widget=BS3TextFieldWidget())
+    unirec_file = StringField(
+        _('Select UniRec'),
+        description=_('<div class="container"> <button type="button" class="btn btn-info" data-toggle="modal" data-t$
+                      '<!-- Modal --> '
+                      '<div class="modal fade" id="myModal" role="dialog" style="display: none;"> '
+                      '<div class="modal-dialog"> '
+                      '<!-- Modal content--> '
+                      '<div class="modal-content"> <div class="modal-header"> <button type="button" class="close" da$
+                      '<h4 class="modal-title">Chose file</h4> </div> <div class="modal-body"> '
+                      '<table id="mytable" class="table table-bordred table-striped"> '
+                      '<thead> '
+                      '<tr>'
+                      '<th>File name</th> <th>Author</th> <th>Data and time</th>'
+                      '<th>Format</th> '
+                      '<th>Size</th> '
+                      '<th>Translate</th> '
+                      '<th>Delete</th> '
+                      '</tr>'
+                      '</thead> '
+                      '<tbody> ' + sez + '</tbody> '
+                                         '</table>'
+                                         '</div> <div class="modal-footer"> </div> </div> </div> </div> </div>'),
+        validators=[DataRequired()])
     csv_file = FileField(
         _('CSV File'),
         description=_('Select a CSV file to be uploaded to a database.'),
