@@ -59,7 +59,7 @@ class CsvToDatabaseForm(DynamicForm):
     list = os.listdir('coliot')
 
     for ln in list:
-        sez = sez + ' <tr> <td>'+ln+'</td> <td>root</td> <td>28.08.2018 11:21</td> <td>.md</td> <td>342 Kb</td> <td>$
+        sez = sez + ' <tr> <td>'+ln+'</td> <td>root</td> <td>28.08.2018 11:21</td> <td>.md</td> <td>342 Kb</td> <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-success btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-open"></span></button></p></td> <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td> </tr>'
 
     name = StringField(
         _('Table Name'),
@@ -68,12 +68,12 @@ class CsvToDatabaseForm(DynamicForm):
         widget=BS3TextFieldWidget())
     unirec_file = StringField(
         _('Select UniRec'),
-        description=_('<div class="container"> <button type="button" class="btn btn-info" data-toggle="modal" data-t$
+        description=_('<div class="container"> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Select file</button>'
                       '<!-- Modal --> '
                       '<div class="modal fade" id="myModal" role="dialog" style="display: none;"> '
                       '<div class="modal-dialog"> '
                       '<!-- Modal content--> '
-                      '<div class="modal-content"> <div class="modal-header"> <button type="button" class="close" da$
+                      '<div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal">×</button>'
                       '<h4 class="modal-title">Chose file</h4> </div> <div class="modal-body"> '
                       '<table id="mytable" class="table table-bordred table-striped"> '
                       '<thead> '
