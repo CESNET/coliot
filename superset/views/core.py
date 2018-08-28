@@ -345,43 +345,37 @@ class UnirecToDatabaseView(SimpleFormView):
 
         unirec_filename = form.unirec_file.data
         path = os.path.join(config['UNIREC_FOLDER'], form.unirec_file.data + '.csv')
-	unirec_path = in_path + form.unirec_file.data
-        #path = form.unirec_file.data)
 
-	test = path
         os.system(logger + ' -i f:' + in_path + unirec_filename + ' -t -w ' + path)
-        #os.system('iconv -f UTF-8 -t UTF-8 ' + path + 'x > ' + path)
-	
-	form.unirec_file.data = form.unirec_file.data + '.csv'
-	#time.sleep(10)
-	
-	try:
+        form.unirec_file.data = form.unirec_file.data + '.csv'
+
+        try:
             utils.ensure_path_exists(config['UNIREC_FOLDER'])
             table = SqlaTable(table_name=form.name.data)
             table.database = form.data.get('con')
             table.database_id = table.database.id
             table.database.db_engine_spec.create_table_from_csv(form, table)
-        except Exception as e:
-            try:
-                os.remove(path)
-            except OSError:
-                pass
-            message = 'Table name {} already exists. Please pick another'.format(
-                form.name.data) if isinstance(e, IntegrityError) else text_type(e)
-            flash(
-                message,
-                'danger')
-            return redirect('/unirectodatabaseview/form')
+            except Exception as e:
+                try:
+                    os.remove(path)
+                except OSError:
+                    pass
+                message = 'Table name {} already exists. Please pick another'.format(
+                    form.name.data) if isinstance(e, IntegrityError) else text_type(e)
+                flash(
+                    message,
+                    'danger')
+                return redirect('/unirectodatabaseview/form')
 
-        os.remove(path)
-        # Go back to welcome page / splash screen
-        db_name = table.database.database_name
-        message = _('CSV file "{0}" uploaded to table "{1}" in '
-                    'database "{2}"'.format(unirec_filename,
-                                            form.name.data,
-                                            db_name))
-        flash(message, 'info')
-        return redirect('/tablemodelview/list/')
+            os.remove(path)
+            # Go back to welcome page / splash screen
+            db_name = table.database.database_name
+            message = _('CSV file "{0}" uploaded to table "{1}" in '
+                        'database "{2}"'.format(unirec_filename,
+                                                form.name.data,
+                                                db_name))
+            flash(message, 'info')
+            return redirect('/tablemodelview/list/')
 
 
 appbuilder.add_view_no_menu(UnirecToDatabaseView)

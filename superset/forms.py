@@ -55,7 +55,7 @@ class CsvToDatabaseForm(DynamicForm):
             models.Database).filter_by(
                 allow_csv_upload=True).all()
 
-    sez = '';
+    sez = ''
     list = os.listdir('/etc/coliot/unirec/')
 
     for ln in list:
