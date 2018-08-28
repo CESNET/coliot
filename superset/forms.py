@@ -55,7 +55,7 @@ class CsvToDatabaseForm(DynamicForm):
             models.Database).filter_by(
                 allow_csv_upload=True).all()
 
-    sez = ' ';
+    sez = '';
     list = os.listdir('/etc/coliot/unirec/')
 
     for ln in list:
@@ -84,7 +84,7 @@ class CsvToDatabaseForm(DynamicForm):
                       '<th>Translate</th> '
                       '</tr>'
                       '</thead> '
-                      '<tbody> ' + sez + '</tbody> '
+                      '<tbody id="file_name"> </tbody> '
                                          '</table>'
                                          '</div> <div class="modal-footer"> </div> </div> </div> </div> </div>'))
     con = QuerySelectField(
