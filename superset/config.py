@@ -95,7 +95,7 @@ ENABLE_PROXY_FIX = False
 # GLOBALS FOR APP Builder
 # ------------------------------
 # Uncomment to setup Your App name
-APP_NAME = 'Coliot'
+APP_NAME = 'Superset'
 
 # Uncomment to setup an App icon
 APP_ICON = '/static/assets/images/superset-logo@2x.png'
@@ -175,6 +175,9 @@ LANGUAGES = {
 # ---------------------------------------------------
 # The file upload folder, when using models with files
 UPLOAD_FOLDER = BASE_DIR + '/app/static/uploads/'
+
+# The UniRec folder
+UNIREC_FOLDER = '/etc/coliot/unirec/'
 
 # The image upload folder, when using models with images
 IMG_UPLOAD_FOLDER = BASE_DIR + '/app/static/uploads/'

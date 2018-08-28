@@ -171,7 +171,7 @@ class BaseEngineSpec(object):
     @staticmethod
     def csv_to_df(**kwargs):
         kwargs['filepath_or_buffer'] = \
-            config['UPLOAD_FOLDER'] + kwargs['filepath_or_buffer']
+            config['UNIREC_FOLDER'] + kwargs['filepath_or_buffer']
         kwargs['encoding'] = 'utf-8'
         kwargs['iterator'] = True
         chunks = pandas.read_csv(**kwargs)
@@ -192,8 +192,9 @@ class BaseEngineSpec(object):
     def create_table_from_csv(form, table):
         def _allowed_file(filename):
             # Only allow specific file extensions as specified in the config
-            extension = os.path.splitext(filename)[1]
-            return extension and extension[1:] in config['ALLOWED_EXTENSIONS']
+            extension = os.path.splitext(filename)[0] #TODO [1]
+            #return extension and extension[1:] in config['ALLOWED_EXTENSIONS']
+	    return extension
 
         filename = secure_filename(form.unirec_file.data)
         if not _allowed_file(filename):
@@ -1070,7 +1071,7 @@ class HiveEngineSpec(PrestoEngineSpec):
         filename = form.unirec_file.data
         upload_prefix = config['CSV_TO_HIVE_UPLOAD_DIRECTORY']
 
-        upload_path = config['UPLOAD_FOLDER'] + \
+        upload_path = config['UNIREC_FOLDER'] + \
             secure_filename(form.unirec_file.data)
 
         hive_table_schema = Table(upload_path).infer()

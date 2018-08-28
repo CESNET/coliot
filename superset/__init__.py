@@ -151,9 +151,9 @@ if app.config.get('ENABLE_CHUNK_ENCODING'):
 
     app.wsgi_app = ChunkedEncodingFix(app.wsgi_app)
 
-if app.config.get('UPLOAD_FOLDER'):
+if app.config.get('UNIREC_FOLDER'):
     try:
-        os.makedirs(app.config.get('UPLOAD_FOLDER'))
+        os.makedirs(app.config.get('UNIREC_FOLDER'))
     except OSError:
         pass
 

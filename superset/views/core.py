@@ -11,6 +11,8 @@ import os
 import re
 import time
 import traceback
+import codecs
+import sys
 from urllib import parse
 
 from flask import (
@@ -314,22 +316,27 @@ class CsvToDatabaseView(SimpleFormView):
         in_path = '/etc/coliot/unirec/' # chose default path for UniRec files
         temp_filename = 'temp.csv' # TODO generate this file name
 
-        test = in_path + form.unirec_file.data
+        unirec_filename = form.unirec_file.data
+        path = os.path.join(config['UNIREC_FOLDER'], form.unirec_file.data + '.csv')
+	unirec_path = in_path + form.unirec_file.data
+        #path = form.unirec_file.data)
 
-        form.unirec_file.data = in_path + form.unirec_file.data
-        csv_filename = form.unirec_file.data
-        #path = os.path.join(config['UPLOAD_FOLDER'], temp_filename)
-        path = form.unirec_file.data
-        os.system(logger + ' -i f:' + in_path + ' -t -w ' + path)
-        try:
-            utils.ensure_path_exists(config['UPLOAD_FOLDER'])
+	test = path
+        os.system(logger + ' -i f:' + in_path + unirec_filename + ' -t -w ' + path) #TODO + 'x'
+        #os.system('iconv -f UTF-8 -t UTF-8 ' + path + 'x > ' + path)
+	
+	form.unirec_file.data = form.unirec_file.data + '.csv'
+	#time.sleep(10)
+	
+	try:
+            utils.ensure_path_exists(config['UNIREC_FOLDER'])
             table = SqlaTable(table_name=form.name.data)
             table.database = form.data.get('con')
             table.database_id = table.database.id
             table.database.db_engine_spec.create_table_from_csv(form, table)
         except Exception as e:
             try:
-                os.remove(path)
+                os.remove(path + 'trlala')
             except OSError:
                 pass
             message = 'Table name {} already exists. Please pick another'.format(
@@ -339,11 +346,11 @@ class CsvToDatabaseView(SimpleFormView):
                 'danger')
             return redirect('/csvtodatabaseview/form')
 
-        os.remove(path)
+        #TODO os.remove(path)
         # Go back to welcome page / splash screen
         db_name = table.database.database_name
         message = _('CSV file "{0}" uploaded to table "{1}" in '
-                    'database "{2}"'.format(csv_filename,
+                    'database "{2}"'.format(unirec_filename,
                                             form.name.data,
                                             db_name))
         flash(message + 'DEBUG: ' + test, 'info')
