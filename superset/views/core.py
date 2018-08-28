@@ -355,17 +355,17 @@ class UnirecToDatabaseView(SimpleFormView):
             table.database = form.data.get('con')
             table.database_id = table.database.id
             table.database.db_engine_spec.create_table_from_csv(form, table)
-            except Exception as e:
-                try:
-                    os.remove(path)
-                except OSError:
-                    pass
+        except Exception as e:
+            try:
+                os.remove(path)
+            except OSError:
+                pass
                 message = 'Table name {} already exists. Please pick another'.format(
                     form.name.data) if isinstance(e, IntegrityError) else text_type(e)
                 flash(
                     message,
                     'danger')
-                return redirect('/unirectodatabaseview/form')
+            return redirect('/unirectodatabaseview/form')
 
             os.remove(path)
             # Go back to welcome page / splash screen
