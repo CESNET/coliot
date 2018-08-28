@@ -367,15 +367,15 @@ class UnirecToDatabaseView(SimpleFormView):
                     'danger')
             return redirect('/unirectodatabaseview/form')
 
-            os.remove(path)
-            # Go back to welcome page / splash screen
-            db_name = table.database.database_name
-            message = _('CSV file "{0}" uploaded to table "{1}" in '
-                        'database "{2}"'.format(unirec_filename,
-                                                form.name.data,
-                                                db_name))
-            flash(message, 'info')
-            return redirect('/tablemodelview/list/')
+        os.remove(path)
+        # Go back to welcome page / splash screen
+        db_name = table.database.database_name
+        message = _('CSV file "{0}" uploaded to table "{1}" in '
+                    'database "{2}"'.format(unirec_filename,
+                                            form.name.data,
+                                            db_name))
+        flash(message, 'info')
+        return redirect('/tablemodelview/list/')
 
 
 appbuilder.add_view_no_menu(UnirecToDatabaseView)
