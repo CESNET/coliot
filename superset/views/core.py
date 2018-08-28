@@ -262,14 +262,14 @@ class DatabaseView(SupersetModelView, DeleteMixin, YamlExportMixin):  # noqa
         DeleteMixin._delete(self, pk)
 
 
-appbuilder.add_link(
-    'Import Dashboards',
-    label=__('Import Dashboards'),
-    href='/superset/import_dashboards',
-    icon='fa-cloud-upload',
-    category='Manage',
-    category_label=__('Manage'),
-    category_icon='fa-wrench')
+# appbuilder.add_link(
+#     'Import Dashboards',
+#     label=__('Import Dashboards'),
+#     href='/superset/import_dashboards',
+#     icon='fa-cloud-upload',
+#     category='Manage',
+#     category_label=__('Manage'),
+#     category_icon='fa-wrench')
 
 
 appbuilder.add_view(
@@ -294,6 +294,27 @@ class DatabaseAsync(DatabaseView):
 
 appbuilder.add_view_no_menu(DatabaseAsync)
 
+class ShowUniRecFiles(SimpleFormView):
+    def form_get(self, form):
+        form.header.data = 0
+        form.mangle_dupe_cols.data = True
+        form.skipinitialspace.data = False
+        form.skip_blank_lines.data = True
+        form.infer_datetime_format.data = True
+        form.decimal.data = '.'
+        form.if_exists.data = 'append'
+
+    def form_post(self, form):
+        return redirect('/showunirecfiles')
+
+        message = _('CSV file "{0}" uploaded to table "{1}" in '
+                    'database "{2}"'.format(unirec_filename,
+                                            form.name.data,
+                                            db_name))
+        flash(message, 'info')
+        return redirect('/showunirecfiles')
+
+appbuilder.add_view_no_menu(ShowUniRecFiles)
 
 class UnirecToDatabaseView(SimpleFormView):
     logger = '/usr/bin/nemea/logger'
@@ -322,7 +343,7 @@ class UnirecToDatabaseView(SimpleFormView):
         #path = form.unirec_file.data)
 
 	test = path
-        os.system(logger + ' -i f:' + in_path + unirec_filename + ' -t -w ' + path) #TODO + 'x'
+        os.system(logger + ' -i f:' + in_path + unirec_filename + ' -t -w ' + path)
         #os.system('iconv -f UTF-8 -t UTF-8 ' + path + 'x > ' + path)
 	
 	form.unirec_file.data = form.unirec_file.data + '.csv'
@@ -336,7 +357,7 @@ class UnirecToDatabaseView(SimpleFormView):
             table.database.db_engine_spec.create_table_from_csv(form, table)
         except Exception as e:
             try:
-                os.remove(path + 'trlala')
+                os.remove(path)
             except OSError:
                 pass
             message = 'Table name {} already exists. Please pick another'.format(
@@ -346,14 +367,14 @@ class UnirecToDatabaseView(SimpleFormView):
                 'danger')
             return redirect('/unirectodatabaseview/form')
 
-        #TODO os.remove(path)
+        os.remove(path)
         # Go back to welcome page / splash screen
         db_name = table.database.database_name
         message = _('CSV file "{0}" uploaded to table "{1}" in '
                     'database "{2}"'.format(unirec_filename,
                                             form.name.data,
                                             db_name))
-        flash(message + 'DEBUG: ' + test, 'info')
+        flash(message, 'info')
         return redirect('/tablemodelview/list/')
 
 
@@ -1184,7 +1205,7 @@ class Superset(BaseSupersetView):
     @has_access
     @expose('/import_dashboards', methods=['GET', 'POST'])
     def import_dashboards(self):
-        """Overrides the dashboards using json instances from the file."""
+        """Overrides the dashboards using json  from the file."""
         f = request.files.get('file')
         if request.method == 'POST' and f:
             current_tt = int(time.time())
