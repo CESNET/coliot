@@ -295,7 +295,7 @@ class DatabaseAsync(DatabaseView):
 appbuilder.add_view_no_menu(DatabaseAsync)
 
 
-class CsvToDatabaseView(SimpleFormView):
+class UnirecToDatabaseView(SimpleFormView):
     logger = '/usr/bin/nemea/logger'
 
     form = CsvToDatabaseForm
@@ -357,7 +357,7 @@ class CsvToDatabaseView(SimpleFormView):
         return redirect('/tablemodelview/list/')
 
 
-appbuilder.add_view_no_menu(CsvToDatabaseView)
+appbuilder.add_view_no_menu(UnirecToDatabaseView)
 
 
 class DatabaseTablesAsync(DatabaseView):
