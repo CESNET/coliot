@@ -2771,15 +2771,15 @@ class CssTemplateAsyncModelView(CssTemplateModelView):
     list_columns = ['template_name', 'css']
 
 
-appbuilder.add_separator('Sources')
-appbuilder.add_view(
-    CssTemplateModelView,
-    'CSS Templates',
-    label=__('CSS Templates'),
-    icon='fa-css3',
-    category='Manage',
-    category_label=__('Manage'),
-    category_icon='')
+# appbuilder.add_separator('Sources')
+# appbuilder.add_view(
+#     CssTemplateModelView,
+#     'CSS Templates',
+#     label=__('CSS Templates'),
+#     icon='fa-css3',
+#     category='Manage',
+#     category_label=__('Manage'),
+#     category_icon='')
 
 
 appbuilder.add_view_no_menu(CssTemplateAsyncModelView)
@@ -2803,16 +2803,6 @@ appbuilder.add_link(
     category='SQL Lab',
     category_label=__('SQL Lab'),
 )
-
-appbuilder.add_link(
-    'Upload a CSV',
-    label=__('Upload a CSV'),
-    href='/csvtodatabaseview/form',
-    icon='fa-upload',
-    category='Sources',
-    category_label=__('Sources'),
-    category_icon='fa-wrench')
-appbuilder.add_separator('Sources')
 
 appbuilder.add_link(
     'UniRec',
