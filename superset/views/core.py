@@ -303,11 +303,11 @@ class UnirecToDatabaseView(SimpleFormView):
     add_columns = ['database', 'schema', 'table_name']
 
     def form_get(self, form):
-        sez = ' '
+        sez = ''
         list = os.listdir('/etc/coliot/unirec/')
 
         for ln in list:
-            sez = sez + ';'+ln
+            sez = sez +ln + ";"
         form.name.data = sez
         form.header.data = 0
         form.mangle_dupe_cols.data = True
