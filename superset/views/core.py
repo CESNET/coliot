@@ -344,7 +344,7 @@ class CsvToDatabaseView(SimpleFormView):
             flash(
                 message,
                 'danger')
-            return redirect('/csvtodatabaseview/form')
+            return redirect('/unirectodatabaseview/form')
 
         #TODO os.remove(path)
         # Go back to welcome page / splash screen
@@ -2807,7 +2807,7 @@ appbuilder.add_link(
 appbuilder.add_link(
     'UniRec',
     label=__('UniRec'),
-    href='/csvtodatabaseview/form',
+    href='/unirectodatabaseview/form',
     icon='fa-upload',
     category='Sources',
     category_label=__('Sources'),
