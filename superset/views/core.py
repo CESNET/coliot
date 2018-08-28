@@ -262,14 +262,14 @@ class DatabaseView(SupersetModelView, DeleteMixin, YamlExportMixin):  # noqa
         DeleteMixin._delete(self, pk)
 
 
-appbuilder.add_link(
-    'Import Dashboards',
-    label=__('Import Dashboards'),
-    href='/superset/import_dashboards',
-    icon='fa-cloud-upload',
-    category='Manage',
-    category_label=__('Manage'),
-    category_icon='fa-wrench')
+#appbuilder.add_link(
+#    'Import Dashboards',
+#    label=__('Import Dashboards'),
+#    href='/superset/import_dashboards',
+#    icon='fa-cloud-upload',
+#    category='Manage',
+#    category_label=__('Manage'),
+#    category_icon='fa-wrench')
 
 
 appbuilder.add_view(
