@@ -76,4 +76,20 @@ cp -R ./collector /opt/coliot/superset
 
 cd /opt/coliot/superset/assets
 npm run build
-#FLASK_ENV=development flask run -p 8088 --with-threads --reload --debugger
+
+echo '[Unit]
+Description=COLIOT service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/usr/bin/env superset runserver -d -p 8088
+
+[Install]
+WantedBy=multi-user.target' > /etc/systemd/system/coliot.service
+
+systemctl start coliot
