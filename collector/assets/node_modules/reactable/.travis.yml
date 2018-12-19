@@ -1,0 +1,18 @@
+sudo: false
+language: node_js
+node_js:
+- 0.12.7
+cache:
+  directories:
+  - node_modules
+before_script:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+deploy:
+  provider: npm
+  email: khankan.npm@gmail.com
+  api_key:
+    secure: jSx/ApnoZybWw8G0mn+q5HCo9jqPPd21TSUcwdljK8oTmvyKX1UwTqXfbIXIFHl08rdJwClbIw2n8vRdcSXvxIbRvNxxjdDV0lL57IXiQ2Tv/0hrb2eQd+cAhIcUAbvgt9zn6dDENjcZVXXMcNnQfajrJjgiL7mAx4Y6O4l/vwgY0RdTF4T6B1atSK6+72iY1LAxirBHytAXfXUISKxFblAPzyOJmWsW5g4tCCBFGWprD81CF3juuIZsF/T2w+9T2GA++ebI+ZpVatAVZBdOJ0Dr8FIw8DzytBv8KcNyC/AYUtYEG/ct5OxCWxGhtQH50qpTjSz2L57SlfbBw6ssNrmglQABRZA8WG/Ju+1dLa0VIhVpBKkGov/e770oExnYSQBv8KTkg/mDh1gZ4UtqldB7vQij+39OC9mNzKmqZvPiiAW4N2eWE6ZZd9C/fbT2xwLIwM/50IN8IJhRYRu6S3hhV8UNSXFi0UgmfYm6mcBiGo4iFgKly++0kXT2iBn0xydImbJ8RW3Hpq2j2KN8AEbytXFVXbJssYt5uxIBVqxPtp+NEgKWU8H4LiPVCs0GkbSZhkZa2FbEB714rqFIXbR4Iao0e3t7nloxS3n/kAMeZldsS6DwSMAaAsQX7sTaCgVotiZivyI6ExFgulSRCQEWmNSfNAP4SrsLU+MeEf4=
+  on:
+    tags: true
+    repo: abdulrahman-khankan/reactable

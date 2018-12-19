@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/visualizations/SparklineCell.jsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">src/visualizations/</a> SparklineCell.jsx
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/53</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/52</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import React from 'react';</span>
+<span class="cstat-no" title="statement not covered" >import PropTypes from 'prop-types';</span>
+<span class="cstat-no" title="statement not covered" >import { Sparkline, LineSeries, PointSeries, HorizontalReferenceLine, VerticalReferenceLine, WithTooltip } from '@data-ui/sparkline';</span>
+<span class="cstat-no" title="statement not covered" >import { d3format } from '../modules/utils';</span>
+<span class="cstat-no" title="statement not covered" >import { getTextDimension } from '../modules/visUtils';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >const propTypes = {</span>
+  className: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  data: PropTypes.array.isRequired,
+  ariaLabel: PropTypes.string,
+  numberFormat: PropTypes.string,
+  yAxisBounds: PropTypes.array,
+  showYAxis: PropTypes.bool,
+  renderTooltip: PropTypes.func,
+};
+<span class="cstat-no" title="statement not covered" >const defaultProps = {</span>
+  className: '',
+  width: 300,
+  height: 50,
+  ariaLabel: '',
+  numberFormat: undefined,
+  yAxisBounds: [null, null],
+  showYAxis: false,
+  renderTooltip() <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >{</span> return <span class="cstat-no" title="statement not covered" >&lt;div /&gt;; },</span></span>
+};
+&nbsp;
+<span class="cstat-no" title="statement not covered" >const MARGIN = {</span>
+  top: 8,
+  right: 8,
+  bottom: 8,
+  left: 8,
+};
+<span class="cstat-no" title="statement not covered" >const tooltipProps = {</span>
+  style: {
+    opacity: 0.8,
+  },
+  offsetTop: 0,
+};
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function getSparklineTextWidth(text) {</span></span>
+  return <span class="cstat-no" title="statement not covered" >getTextDimension({</span>
+    text,
+    style: {
+      fontSize: '12px',
+      fontWeight: 200,
+      letterSpacing: 0.4,
+    },
+  }).width + 5;
+}
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function isValidBoundValue(value) {</span></span>
+  return <span class="cstat-no" title="statement not covered" >value !== null &amp;&amp; value !== undefined &amp;&amp; value !== '' &amp;&amp; !Number.isNaN(value);</span>
+}
+&nbsp;
+class <span class="cstat-no" title="statement not covered" >SparklineCell extends React.Component {</span>
+  renderHorizontalReferenceLine(<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >value, label) {</span></span>
+    return (
+<span class="cstat-no" title="statement not covered" >      &lt;HorizontalReferenceLine</span>
+        reference={value}
+        labelPosition="right"
+        renderLabel={() =&gt; <span class="cstat-no" title="statement not covered" >label}</span>
+        stroke="#bbb"
+        strokeDasharray="3 3"
+        strokeWidth={1}
+      /&gt;
+    );
+  }
+&nbsp;
+  render() <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >{</span></span>
+    const {
+      width,
+      height,
+      data,
+      ariaLabel,
+      numberFormat,
+      yAxisBounds,
+      showYAxis,
+      renderTooltip,
+    } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+&nbsp;
+    const <span class="cstat-no" title="statement not covered" >yScale = {};</span>
+    let <span class="cstat-no" title="statement not covered" >hasMinBound = false;</span>
+    let <span class="cstat-no" title="statement not covered" >hasMaxBound = false;</span>
+&nbsp;
+    if (<span class="cstat-no" title="statement not covered" >yAxisBounds) {</span>
+      const [minBound, maxBound] = <span class="cstat-no" title="statement not covered" >yAxisBounds;</span>
+      hasMinBound = <span class="cstat-no" title="statement not covered" >isValidBoundValue(minBound);</span>
+      if (<span class="cstat-no" title="statement not covered" >hasMinBound) {</span>
+        yScale.<span class="cstat-no" title="statement not covered" >min = minBound;</span>
+      }
+      hasMaxBound = <span class="cstat-no" title="statement not covered" >isValidBoundValue(maxBound);</span>
+      if (<span class="cstat-no" title="statement not covered" >hasMaxBound) {</span>
+        yScale.<span class="cstat-no" title="statement not covered" >max = maxBound;</span>
+      }
+    }
+&nbsp;
+    let <span class="cstat-no" title="statement not covered" >min;</span>
+    let <span class="cstat-no" title="statement not covered" >max;</span>
+    let <span class="cstat-no" title="statement not covered" >minLabel;</span>
+    let <span class="cstat-no" title="statement not covered" >maxLabel;</span>
+    let <span class="cstat-no" title="statement not covered" >labelLength = 0;</span>
+    if (<span class="cstat-no" title="statement not covered" >showYAxis) {</span>
+      const [minBound, maxBound] = <span class="cstat-no" title="statement not covered" >yAxisBounds;</span>
+      min = <span class="cstat-no" title="statement not covered" >hasMinBound</span>
+        ? minBound
+        : data.reduce(<span class="fstat-no" title="function not covered" >(acc, current) =&gt; <span class="cstat-no" title="statement not covered" >Math.min(acc, current), data[0]);</span></span>
+      max = <span class="cstat-no" title="statement not covered" >hasMaxBound</span>
+        ? maxBound
+        : data.reduce(<span class="fstat-no" title="function not covered" >(acc, current) =&gt; <span class="cstat-no" title="statement not covered" >Math.max(acc, current), data[0]);</span></span>
+&nbsp;
+      minLabel = <span class="cstat-no" title="statement not covered" >d3format(numberFormat, min);</span>
+      maxLabel = <span class="cstat-no" title="statement not covered" >d3format(numberFormat, max);</span>
+      labelLength = <span class="cstat-no" title="statement not covered" >Math.max(</span>
+        getSparklineTextWidth(minLabel),
+        getSparklineTextWidth(maxLabel),
+      );
+    }
+&nbsp;
+    const <span class="cstat-no" title="statement not covered" >margin = {</span>
+      ...MARGIN,
+      right: MARGIN.right + labelLength,
+    };
+&nbsp;
+    return (
+<span class="cstat-no" title="statement not covered" >      &lt;WithTooltip</span>
+        tooltipProps={tooltipProps}
+        hoverStyles={null}
+        renderTooltip={renderTooltip}
+      &gt;
+        {({ <span class="cstat-no" title="statement not covered" >onMouseLeave, onMouseMove, tooltipData }) =&gt; (</span>
+<span class="cstat-no" title="statement not covered" >          &lt;Sparkline</span>
+            ariaLabel={ariaLabel}
+            width={width}
+            height={height}
+            margin={margin}
+            data={data}
+            onMouseLeave={onMouseLeave}
+            onMouseMove={onMouseMove}
+            {...yScale}
+          &gt;
+            {showYAxis &amp;&amp;
+              this.renderHorizontalReferenceLine(min, minLabel)}
+            {showYAxis &amp;&amp;
+              this.renderHorizontalReferenceLine(max, maxLabel)}
+            &lt;LineSeries
+              showArea={false}
+              stroke="#767676"
+            /&gt;
+            {tooltipData &amp;&amp;
+              &lt;VerticalReferenceLine
+                reference={tooltipData.index}
+                strokeDasharray="3 3"
+                strokeWidth={1}
+              /&gt;}
+            {tooltipData &amp;&amp;
+              &lt;PointSeries
+                points={[tooltipData.index]}
+                fill="#767676"
+                strokeWidth={1}
+              /&gt;}
+          &lt;/Sparkline&gt;
+        )}
+      &lt;/WithTooltip&gt;
+    );
+  }
+}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >SparklineCell.propTypes = propTypes;</span>
+<span class="cstat-no" title="statement not covered" >SparklineCell.defaultProps = defaultProps;</span>
+&nbsp;
+export default <span class="cstat-no" title="statement not covered" >SparklineCell;</span>
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Aug 28 2018 10:29:14 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
