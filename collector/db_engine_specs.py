@@ -194,7 +194,7 @@ class BaseEngineSpec(object):
             # Only allow specific file extensions as specified in the config
             extension = os.path.splitext(filename)[0] #TODO [1]
             #return extension and extension[1:] in config['ALLOWED_EXTENSIONS']
-	    return extension
+        return extension
 
         filename = secure_filename(form.unirec_file.data)
         if not _allowed_file(filename):
