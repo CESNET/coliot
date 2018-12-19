@@ -349,7 +349,7 @@ class UnirecToDatabaseView(SimpleFormView):
         os.system(logger + ' -i f:' + in_path + unirec_filename + ' -t -w ' + path)
         form.unirec_file.data = form.unirec_file.data + '.csv'
 
-	try:
+        try:
             with open(path, 'r') as file:
                 data = file.readlines()
                 data[0] = data[0].replace(' ', '_')
