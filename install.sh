@@ -71,7 +71,7 @@ superset load_examples
 # See instructions below how to build the front-end assets.
 
 rm -R /opt/coliot/superset
-cp -R ./superset /opt/coliot/superset
+cp -R ./collector /opt/coliot/superset
 
 
 cd /opt/coliot/superset/assets
