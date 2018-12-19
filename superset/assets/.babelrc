@@ -1,4 +1,0 @@
-{
-  "presets" : ["airbnb", "react", "env"],
-  "plugins": ["syntax-dynamic-import"],
-}
