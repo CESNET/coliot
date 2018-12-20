@@ -54,6 +54,9 @@ pip3 install -r /opt/coliot/requirements-dev.txt
 # Install Superset in editable (development) mode
 pip3 install -e /opt/coliot/.
 
+rm -R /opt/coliot/superset
+cp -R ./collector /opt/coliot/superset
+
 # Create an admin user
 fabmanager create-admin --app superset
 
@@ -64,18 +67,18 @@ superset db upgrade
 superset init
 
 # Load some data to play with
-superset load_examples
+#superset load_examples
 
 # Start the Flask dev web server from inside the `superset` dir at port 8088
 # Note that your page may not have css at this point.
 # See instructions below how to build the front-end assets.
 
-rm -R /opt/coliot/superset
-cp -R ./collector /opt/coliot/superset
+#rm -R /opt/coliot/superset
+#cp -R ./collector /opt/coliot/superset
 
 
-cd /opt/coliot/superset/assets
-npm run build
+#cd /opt/coliot/superset/assets
+#npm run build
 
 echo '[Unit]
 Description=COLIOT service
