@@ -40,6 +40,9 @@ mkdir -p /opt/coliot
 git clone https://github.com/apache/incubator-superset.git -b 0.26.0 /opt/coliot/
 #etc.
 
+rm -R /opt/coliot/superset
+cp -R ./collector /opt/coliot/superset
+
 # Move to dir
 #cd /opt/coliot/
 
@@ -53,9 +56,6 @@ pip3 install -r /opt/coliot/requirements.txt
 pip3 install -r /opt/coliot/requirements-dev.txt
 # Install Superset in editable (development) mode
 pip3 install -e /opt/coliot/.
-
-rm -R /opt/coliot/superset
-cp -R ./collector /opt/coliot/superset
 
 # Create an admin user
 fabmanager create-admin --app superset
