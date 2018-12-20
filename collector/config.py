@@ -26,10 +26,8 @@ from superset.stats_logger import DummyStatsLogger
 STATS_LOGGER = DummyStatsLogger()
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-if 'SUPERSET_HOME' in os.environ:
-    DATA_DIR = os.environ['SUPERSET_HOME']
-else:
-    DATA_DIR = os.path.join(os.path.expanduser('~'), '.superset')
+
+DATA_DIR = '/opt/coliot/db_coliot'
 
 # ---------------------------------------------------------
 # Superset specific config
