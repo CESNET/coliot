@@ -27,7 +27,7 @@ STATS_LOGGER = DummyStatsLogger()
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
-DATA_DIR = '/opt/coliot/db_coliot'
+DATA_DIR = '/opt/coliot/superset/db_coliot'
 
 # ---------------------------------------------------------
 # Superset specific config
