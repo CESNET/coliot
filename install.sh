@@ -114,7 +114,12 @@ ExecStart=/usr/bin/env superset runserver -d -p 8088
 WantedBy=multi-user.target' > /etc/systemd/system/coliot.service
 
 echo "[COLIOT] ${CYAN}Restarting Coliot service..${NC}"
-systemctl stop coliotecho "${CYAN}
+systemctl stop coliot
+systemctl start coliot
+
+echo "[COLIOT] ${GREEN}Coliot service is now running on 0.0.0.0:8088${NC}"
+
+echo "${CYAN}
 
          CCCCCCCCCCCCC     OOOOOOOOO     LLLLLLLLLLL         IIIIIIIIII     OOOOOOOOO     TTTTTTTTTTTTTTTTTTTTTTT
      CCC::::::::::::C   OO:::::::::OO   L:::::::::L         I::::::::I   OO:::::::::OO   T:::::::::::::::::::::T
@@ -134,6 +139,3 @@ C:::::C              O:::::O     O:::::O  L:::::L             I::::I  O:::::O   
         CCCCCCCCCCCCC     OOOOOOOOO     LLLLLLLLLLLLLLLLLLLLIIIIIIIIII     OOOOOOOOO           TTTTTTTTTTT
 
 ${NC}"
-
-systemctl start coliot
-echo "[COLIOT] ${GREEN}Coliot service is now running on 0.0.0.0:8088${NC}"
