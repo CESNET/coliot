@@ -24,6 +24,7 @@ This module performs automatic aggregation of messages from UniRec format to col
 ### Prerequisites
 Installation NEMEA System from github
 * https://github.com/CESNET/Nemea
+
 Install NEMEA pytrap
 ```
 pip install nemea-pytrap
