@@ -67,3 +67,5 @@ sudo ./nemea-generator
 - `-vv`              Be more verbose.
 - `-vvv`             Be even more verbose.
 
+## Screenshot of the web-interface
+![alt text](https://github.com/gre0071/coliot/blob/master/screen.PNG)
