@@ -11,7 +11,7 @@ echo "[COLIOT] ${CYAN}Updating packages..${NC}"
 apt-get update
 
 # Install dependencies Debian and Ubuntu
-echo "[COLIOT] ${CYAN}Installing dependecies..${NC}"
+echo "[COLIOT] ${CYAN}Installing dependencies..${NC}"
 apt-get install build-essential libssl-dev libffi-dev python3-dev python3-pip libsasl2-dev libldap2-dev -y
 # Ubuntu 16.04 LTS -add python3.5-dev
 
@@ -60,7 +60,7 @@ git clone https://github.com/apache/incubator-superset.git -b 0.26.0 /opt/coliot
 rm -R /opt/coliot/superset
 cp -R ./collector /opt/coliot/superset
 
-echo "[COLIOT] ${CYAN}Cloning and installing Coliot modul..${NC}"
+echo "[COLIOT] ${CYAN}Cloning and installing Coliot module..${NC}"
 git clone https://github.com/gre0071/coliot-modul.git /opt/coliot/coliot-modul
 echo '[SQLITE]
 database = /opt/coliot/superset/db_coliot/coliot.db' > /opt/coliot/coliot-modul/coliot.conf
