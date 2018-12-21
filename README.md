@@ -19,19 +19,20 @@ sudo ./install.sh
 ```
 
 ## Coliot module
-This module performs automatic aggregation of data from unirek format to collector. The message header is used to identify the event type where fields and types are specified.
+This module performs automatic aggregation of messages from UniRec format to collector. The message header is used to identify the event type where fields and types are specified.
 
 ### Prerequisites
-install NEMEA System 
+Installation NEMEA System from github
 * https://github.com/CESNET/Nemea
+Install NEMEA pytrap
 ```
 pip install nemea-pytrap
 ```
 
-### Template configure
-To create an new template, a user first needs to specify a set of fields and their types a template.
+### Template configuration
+To create new template, a user first needs to specify a set of fields and their types in the template.
 
-Example definition template /template/dispatch.tml
+Example of the template definition /template/dispatch.tml
 ```
 [MAIN]
 TemplateName = DispatchTemplate
@@ -53,7 +54,7 @@ sudo ./nemea-generator
 ### Description
 
 ### Interfaces
-- Input: One UniRec interface you must specific in template file.
+- Input: One UniRec interface, which you must specify in the template file.
   
 ### Parameters
 #### Common TRAP parameters
