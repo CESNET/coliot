@@ -48,8 +48,6 @@ pip3 install click==6.7
 
 pip3 install markdown==2.6.11
 
-pip3 install psycopg2-binary
-
 # Superset installation and initialization
 
 # Create directory
@@ -73,6 +71,7 @@ echo "[COLIOT] ${GREEN}Success..${NC}"
 echo "[COLIOT] ${CYAN}Installing external dependencies..${NC}"
 pip3 install -r /opt/coliot/requirements.txt
 pip3 install -r /opt/coliot/requirements-dev.txt
+pip3 install psycopg2-binary
 
 # Install Superset in editable (development) mode
 echo "[COLIOT] ${CYAN}Installing Coliot..${NC}"
@@ -112,6 +111,7 @@ ExecStart=/usr/bin/env superset runserver -d -p 8088
 WantedBy=multi-user.target' > /etc/systemd/system/coliot.service
 
 echo "[COLIOT] ${CYAN}Restarting Coliot service..${NC}"
+systemctl daemon-reload
 systemctl stop coliot
 systemctl start coliot
 
