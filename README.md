@@ -8,7 +8,7 @@ The data comes to the Coliot collector in UniRec format, which uses the NEMEA fr
 
 The Coliot collector installation package includes a set of preconfigured views and graphs for visualization, which are accessible via web application.
 
-### Installation instructions
+## Installation instructions
 To install the Coliot collector web-interface simply run the installation script, which is part of our solution.
 
 ```
