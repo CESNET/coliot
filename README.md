@@ -18,9 +18,48 @@ cd ./coliot-install
 sudo ./install.sh
 ```
 
+## Coliot module
+This module performs automatic aggregation of data from unirek format to collector. The message header is used to identify the event type where fields and types are specified.
 
-
-
-* https://github.com/apache/incubator-superset
-* https://github.com/CESNET/Nemea-Framework
+### Prerequisites
+install NEMEA System 
 * https://github.com/CESNET/Nemea
+```
+pip install nemea-pytrap
+```
+
+### Template configure
+To create an new template, a user first needs to specify a set of fields and their types a template.
+
+Example definition template /template/dispatch.tml
+```
+[MAIN]
+TemplateName = DispatchTemplate
+TableName = siot_dispatch
+Enable = true
+
+[FIELDS]
+ID = uint64
+TIME = double
+cmd = string
+```
+### Run instruction
+```
+sudo ./coliot.py -i u:coliot-socket
+# Example test for autogenerate data
+sudo ./nemea-generator
+```
+
+### Description
+
+### Interfaces
+- Input: One UniRec interface you must specific in template file.
+  
+### Parameters
+#### Common TRAP parameters
+- `-h [trap,1]`      Print help message for this module / for libtrap specific parameters.
+- `-i IFC_SPEC`      Specification of interface types and their parameters.
+- `-v`               Be verbose.
+- `-vv`              Be more verbose.
+- `-vvv`             Be even more verbose.
+
