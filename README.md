@@ -2,7 +2,7 @@
 
 # Coliot collector
 ## Installation instructions
-To install the Coliot collector web-interface simply run the installation script, which is part of our solution.
+To install the Coliot collector web-interface simply run the installation script, which is part of our solution. Tested on Ubuntu Server 18.04 LTS and Debian GNU/Linux 9.6 (stretch). 
 
 ```
 git clone https://github.com/gre0071/coliot.git ./coliot-install
