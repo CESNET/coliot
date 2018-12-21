@@ -12,7 +12,7 @@ apt-get update
 
 # Install dependencies Debian and Ubuntu
 echo "[COLIOT] ${CYAN}Installing dependecies..${NC}"
-apt-get install build-essential libssl-dev libffi-dev python-dev python-pip libsasl2-dev libldap2-dev -y
+apt-get install build-essential libssl-dev libffi-dev python3-dev python3-pip libsasl2-dev libldap2-dev -y
 # Ubuntu 16.04 LTS -add python3.5-dev
 
 # Install SQLite3
@@ -40,17 +40,15 @@ else
         apt-get install nodejs npm -y
 fi
 # Python’s setup tools and pip
-pip install --upgrade setuptools pip
+pip3 install --user --upgrade setuptools
 
-pip install python-dotenv
+pip3 install python-dotenv
 
-pip install click==6.7
+pip3 install click==6.7
 
-pip install markdown==2.6.11
+pip3 install markdown==2.6.11
 
-pip install psycopg2 -binary
-
-pip install cryptography --no-binary cryptography
+pip3 install psycopg2-binary
 
 # Superset installation and initialization
 
@@ -73,12 +71,12 @@ echo "[COLIOT] ${GREEN}Success..${NC}"
 
 # Install external dependencies
 echo "[COLIOT] ${CYAN}Installing external dependencies..${NC}"
-pip install -r /opt/coliot/requirements.txt
-pip install -r /opt/coliot/requirements-dev.txt
+pip3 install -r /opt/coliot/requirements.txt
+pip3 install -r /opt/coliot/requirements-dev.txt
 
 # Install Superset in editable (development) mode
 echo "[COLIOT] ${CYAN}Installing Coliot..${NC}"
-pip install -e /opt/coliot/.
+pip3 install -e /opt/coliot/.
 
 # Create an admin user
 echo "[COLIOT] ${CYAN}Creating an admin user..${NC}"
