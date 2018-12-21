@@ -6,6 +6,8 @@ NC='\033[0m' # No Color
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 
+DIR_NEMEA='/usr/bin/nemea'
+
 # Package list
 echo "[COLIOT] ${CYAN}Updating packages..${NC}"
 apt-get update
@@ -116,6 +118,12 @@ systemctl stop coliot
 systemctl start coliot
 
 echo "[COLIOT] ${GREEN}Coliot service is now running on 0.0.0.0:8088${NC}"
+
+if [ -d "$DIR_NEMEA" ]; then
+        echo "[COLIOT] ${GREEN}NEMEA system found${NC}"
+else
+        echo "[COLIOT] ${YELLOW}NEMEA system not found${NC}"
+fi
 
 echo "${CYAN}
 
